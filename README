@@ -1,0 +1,25 @@
+###########################################################################################################
+#  MyBenefits WordPress Plugin  #
+#################################
+
+This is a plugin I created to work as a MyBenefits client program for WordPress to let clients create 
+individual, password-protected client sections to distribute secured documents.  It's a very basic attempt
+such, but it accomplished the needed result.
+
+## TODO
+   - Add in multi-file uploading
+   - Allow for sorting/searching of clients list
+   - Remove unneeded fields from client info
+   - Add in draggable order for page order
+   - Add in checks to support SSL coverage for pages
+
+## Installation
+   1) Upload folder to *site-root*/wp-content/plugins/
+   2) Change permissions to the /client-files/ folder to 755 (644?)
+   3) COPY both files from /template-files/ to the template folder for template of site.
+      3a) customize the template files to fit/match design layout of template if needed.
+
+## Copyright
+
+This plugin is wholly owned by IntellAgent Benefit Solutions.  You can use the plugin for your own personal
+use, however you ARE NOT ENTITLED to use the plugin for any commercial or public use.

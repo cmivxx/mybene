@@ -1,4 +1,0 @@
-mybene
-======
-
-mybene wordpress plugin

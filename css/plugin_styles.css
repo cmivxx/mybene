@@ -1,0 +1,10 @@
+
+.updateprogress {
+	padding-left:10px;
+	display:none;
+}
+
+.required {
+	font-size: 9px;
+	color: #900;
+}
