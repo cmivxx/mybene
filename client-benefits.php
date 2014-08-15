@@ -182,7 +182,7 @@ if (isset($_POST['uploadFile'])){
      </form>
     	</div>
         
-    	<div style="float:left; width:275px; margin-left:15px; padding:5px;">
+    	<div style="float:left; width:275px; margin-left:50px; padding:5px;">
     	<h3> Pages <a class="button add-new-h2" href="?page=benefits_page&id=<?php echo $_GET['id'] ?>">New Page</a>        </h3>
         <form name="form1" method="post" action="<?php echo $_SERVER["../my-benefits/REQUEST_URI"]; ?>">
 		<input type="hidden" value="delgroupPages" name="task"/>      
