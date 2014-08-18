@@ -15,7 +15,7 @@ such, but it accomplished the needed result.
 
 ## Installation
    1) Upload folder to *site-root*/wp-content/plugins/
-   2) Change permissions to the /client-files/ folder to 755 (644?)
+   2) Change permissions to the /client-files/ folder to 744
    3) COPY both files from /template-files/ to the template folder for template of site.
       3a) customize the template files to fit/match design layout of template if needed.
 
