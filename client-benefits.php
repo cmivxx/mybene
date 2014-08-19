@@ -16,6 +16,7 @@ function benefits_page() {
 			wp_enqueue_script('post');
 			wp_enqueue_script('editor');
 			wp_enqueue_script('media-upload');
+			wp_enqueue_media( array( 'post' => $post_ID ) );
 		}
 		
 		function editor_admin_head() {
@@ -140,7 +141,7 @@ if (isset($_POST['uploadFile'])){
 	$pages_list = $wpdb->get_results("SELECT * FROM ".PAGES_TABLE." WHERE client_id=".$_GET['id']." ORDER BY page_order ASC");
 
 ?>
-	<script type="text/javascript" src="<?php echo JS_DIRECTORY ?>jquery-1.4.1.js" ></script>
+	<script type="text/javascript" src="<?php echo JS_DIRECTORY ?>jquery-2.1.1.js" ></script>
 					<script type="text/javascript" src="<?php echo JS_DIRECTORY ?>mybene_functions.js" ></script>
 				   	<script type="text/javascript" src="<?php echo JS_DIRECTORY ?>jquery.validationEngine.js" ></script>
 					<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIRECTORY ?>validationEngine.jquery.css" media="screen" title="no title" charset="utf-8" />
@@ -162,8 +163,21 @@ if (isset($_POST['uploadFile'])){
           </tr>
           <tr>
             <td>  
-                <?php the_editor($pageInfo->html, $id = 'editor', $prev_id = 'title', $media_buttons = true, $tab_index = 2) ?>
- 		<script type="text/javascript">
+                
+        <?php wp_editor( $post->post_content, 'content', array(
+                'dfw' => true,
+                'drag_drop_upload' => true,
+                'tabfocus_elements' => 'insert-media-button,save-post',
+                'editor_height' => 360,
+                'tinymce' => array(
+                          'resize' => false,
+                          'add_unload_trigger' => false,
+                          ),
+        ) ); ?>
+
+                <!-- ?php the_editor($pageInfo->html, $id = 'editor', $prev_id = 'title', $media_buttons = true, $tab_index = 2) ? -->
+                
+ 			<script type="text/javascript">
                 $(document).ready(function() {
                         $("#editor").width("100%");
                 });
