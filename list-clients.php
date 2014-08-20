@@ -95,10 +95,11 @@ function list_clients() {
                         <td><?php echo $clients->state; ?></td>
                         <td><?php echo $clients->zip; ?></td>
                         <td>
+                        <a href="?page=client_file_check&id=<?php echo $clients->id; ?>">&check;</a>
                         <a href="?page=add_client&id=<?php echo $clients->id; ?>">
-                        <img src="<?php echo IMG_DIRECTORY.'edit.png' ?>" align="absmiddle" title="Edit Client Information"></a>  
+                            <img src="<?php echo IMG_DIRECTORY.'edit.png' ?>" align="absmiddle" title="Edit Client Information"></a>  
                         <a href="?page=benefits_page&id=<?php echo $clients->id; ?>">
-                        <img src="<?php echo IMG_DIRECTORY.'active.png' ?>" align="absmiddle" title="Add/Edit Client Benefits"></a> 
+                            <img src="<?php echo IMG_DIRECTORY.'active.png' ?>" align="absmiddle" title="Add/Edit Client Benefits"></a> 
                         </td>
                     </tr>
                         <?php

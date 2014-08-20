@@ -3,12 +3,15 @@
 Plugin Name: myBenefits Plugin
 Plugin URI: http://www.intellagentbenefits.com
 Description: 
-Version: 1.0.0a
+Version: 2.0.1a
 Author: Intelagent Benefit Solutions
 Author URI: http://www.intellagentbenefits.com
 */
 	
-	// This is the main file that is used when activating and deavtivatting this plugin.  It is used to control the pages that are displayed when the user clicks a link in the admin menu.  Uses the case switch at the bottom of this file to display the pages.  The functions for the other pages could be in this one file but are seperated for simpicity.
+	// This is the main file that is used when activating and deavtivatting this plugin.  
+	// It is used to control the pages that are displayed when the user clicks a link in the admin menu.  
+	// Uses the case switch at the bottom of this file to display the pages.  The functions for the other 
+	// pages could be in this one file but are seperated for simpicity.
 
 	//Load functions used throughout the plugin 
 	require_once('functions.php');
@@ -21,6 +24,7 @@ Author URI: http://www.intellagentbenefits.com
 	include('submit-client.php');
 	include('client-benefits.php');
 	include('myben-admin.php');
+	include('client_file_check.php');
 
 	global $wpdb;
 	global $blog_id;
@@ -194,12 +198,12 @@ function uninstall() {
 function add_menus() {
 
 	// Add a new top-level menu 
-   add_menu_page( 'Policy Briefcase Panel', 'Policy Briefcase', 5, 'list_clients', 'list_clients', IMG_DIRECTORY.'ico16.png', 3);
-   add_submenu_page( 'list_clients', 'Briefcase Panel', 'List Clients', 5, 'list_clients', 'list_clients');
-   add_submenu_page( 'list_clients', 'New Insured', 'Add New Client', 5, 'add_client', 'add_client');
-   add_submenu_page( '', '', 'Benfits Page', 5, 'benefits_page', 'benefits_page');
-   add_submenu_page( 'list_clients', 'Admin', 'Admin', 10, 'myBenAdmin', 'myBenAdmin');
-
+   add_menu_page( 'Policy Briefcase Panel', 'Policy Briefcase', 'manage_options', 'list_clients', 'list_clients', IMG_DIRECTORY.'ico16.png', 3);
+   add_submenu_page( 'list_clients', 'Briefcase Panel', 'List Clients', 'manage_options', 'list_clients', 'list_clients');
+   add_submenu_page( 'options.php', 'Benefits Page', 'Benfits Page', 'manage_options', 'benefits_page', 'benefits_page');
+   add_submenu_page( 'list_clients', 'New Insured', 'Add New Client', 'manage_options', 'add_client', 'add_client');
+   add_submenu_page( 'list_clients', 'Admin', 'Admin', 'manage_options', 'myBenAdmin', 'myBenAdmin');
+   add_submenu_page( 'options.php', 'Check For Missing Files', 'File Check', 'manage_options', 'client_file_check', 'client_file_check');
 
 }
 

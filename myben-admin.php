@@ -35,11 +35,11 @@ function myBenAdmin() {
 }
   
   ?>
-	<script type="text/javascript" src="<?php echo JS_DIRECTORY ?>jquery-2.1.1.js" ></script>
-					<script type="text/javascript" src="<?php echo JS_DIRECTORY ?>mybene_functions.js" ></script>
-				   	<script type="text/javascript" src="<?php echo JS_DIRECTORY ?>jquery.validationEngine.js" ></script>
-					<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIRECTORY ?>validationEngine.jquery.css" media="screen" title="no title" charset="utf-8" />
-					<link rel="stylesheet" type="text/css" href="<?php echo CSS_DIRECTORY ?>plugin_styles.css" media="screen" title="no title" charset="utf-8" />
+        <script type="text/javascript" src="<?php echo JS_DIRECTORY ?>jquery-2.1.1.js" ></script>
+        <script type="text/javascript" src="<?php echo JS_DIRECTORY ?>mybene_functions.js" ></script>
+        <script type="text/javascript" src="<?php echo JS_DIRECTORY ?>jquery.validationEngine.js" ></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo CSS_DIRECTORY ?>validationEngine.jquery.css" media="screen" title="no title" charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="<?php echo CSS_DIRECTORY ?>plugin_styles.css" media="screen" title="no title" charset="utf-8" />
 	
             <div class="wrap">
                 
