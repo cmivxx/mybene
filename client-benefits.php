@@ -164,18 +164,17 @@ if (isset($_POST['uploadFile'])){
           <tr>
             <td>  
                 
-        <?php wp_editor( $post->post_content, 'content', array(
+        <?php wp_editor( $pageInfo->html, 'editor', array(
                 'dfw' => true,
                 'drag_drop_upload' => true,
                 'tabfocus_elements' => 'insert-media-button,save-post',
                 'editor_height' => 360,
                 'tinymce' => array(
-                          'resize' => false,
+                          'resize' => true,
                           'add_unload_trigger' => false,
                           ),
         ) ); ?>
 
-                <!-- ?php the_editor($pageInfo->html, $id = 'editor', $prev_id = 'title', $media_buttons = true, $tab_index = 2) ? -->
                 
  			<script type="text/javascript">
                 $(document).ready(function() {
