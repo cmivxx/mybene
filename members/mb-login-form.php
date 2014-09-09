@@ -74,7 +74,7 @@ if (!$session->is_logged_in()) {
             <input name="password" type="password" id="" tabindex="20" value="" size="25" />
             
     <br />
-              <input type="submit" name="login-submit" id="" value="Sign in" style="
+              <input type="submit" name="login-submit" id="" value="&nbsp;" style="
     background: url(http://demo4.intellagentbenefits.com/wp-content/uploads/2014/08/Sign-In-Button.png) no-repeat;
     width:  67px;
     height: 28px;
