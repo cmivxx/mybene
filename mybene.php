@@ -3,15 +3,12 @@
 Plugin Name: myBenefits Plugin
 Plugin URI: http://www.intellagentbenefits.com
 Description: 
-Version: 2.0.1a
+Version: 1.0.0a
 Author: Intelagent Benefit Solutions
 Author URI: http://www.intellagentbenefits.com
 */
 	
-	// This is the main file that is used when activating and deavtivatting this plugin.  
-	// It is used to control the pages that are displayed when the user clicks a link in the admin menu.  
-	// Uses the case switch at the bottom of this file to display the pages.  The functions for the other 
-	// pages could be in this one file but are seperated for simpicity.
+	// This is the main file that is used when activating and deavtivatting this plugin.  It is used to control the pages that are displayed when the user clicks a link in the admin menu.  Uses the case switch at the bottom of this file to display the pages.  The functions for the other pages could be in this one file but are seperated for simpicity.
 
 	//Load functions used throughout the plugin 
 	require_once('functions.php');

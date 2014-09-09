@@ -175,6 +175,7 @@ if (isset($_POST['uploadFile'])){
                           ),
         ) ); ?>
 
+                <!-- ?php the_editor($pageInfo->html, $id = 'editor', $prev_id = 'title', $media_buttons = true, $tab_index = 2) ? -->
                 
  			<script type="text/javascript">
                 $(document).ready(function() {
@@ -239,8 +240,8 @@ if (isset($_POST['uploadFile'])){
 					?>
                 </tbody>
               </table>
-         <input type="submit" class="button-secondary delete" name="deleteit" value="Delete Page(s)" id="deleteit" onclick="return confirm('Are you sure you want to delete the page(s) you selected?')"/>
-         <input type="submit" class="button-secondary update" name="updateit" value="Update Page Order" id="updateit"/>
+              <center><input type="submit" class="button-secondary delete" name="deleteit" value="Delete Page(s)" id="deleteit" onclick="return confirm('Are you sure you want to delete the page(s) you selected?')"/> &nbsp;
+         <input type="submit" class="button-secondary update" name="updateit" value="Update Page Order" id="updateit"/></center>
       
       </form>
 
