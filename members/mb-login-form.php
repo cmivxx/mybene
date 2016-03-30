@@ -101,7 +101,7 @@ if (!$session->is_logged_in()) {
     if ( $_SESSION['uid'] != NULL ) {	
 	
 
-    $pages_list = $wpdb->get_results("SELECT * FROM ".PAGES_TABLE." WHERE client_id=".$_SESSION['uid']." ORDER BY page_order ASC");
+    $pages_list = $wpdb->get_results("SELECT * FROM ".PAGES_TABLE." WHERE client_id=".$_SESSION['uid']." AND status='0' ORDER BY page_order ASC");
 	$userinfo = $wpdb->get_row("SELECT * FROM ".CLIENTS_TABLE." WHERE id='".$_SESSION['uid']."'");
     
     if(!$pages_list == NULL ){

@@ -5,7 +5,7 @@ global $wpdb;
 if ( $_SESSION['uid'] != NULL ) {	
 	
 
-    $pages_list = $wpdb->get_results("SELECT * FROM ".PAGES_TABLE." WHERE client_id=".$_SESSION['uid']);
+    $pages_list = $wpdb->get_results("SELECT * FROM ".PAGES_TABLE." WHERE client_id='".$_SESSION['uid']"' AND status='0'");
 	$userinfo = $wpdb->get_row("SELECT * FROM ".CLIENTS_TABLE." WHERE id='".$_SESSION['uid']."'");
     
     if(!$pages_list == NULL ){

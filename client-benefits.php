@@ -138,6 +138,10 @@ if (isset($_POST['uploadFile'])){
 	$files_list = $wpdb->get_results("SELECT * FROM ".FILES_TABLE." WHERE client_id=".$_GET['id']);
 	$pages_list = $wpdb->get_results("SELECT * FROM ".PAGES_TABLE." WHERE client_id=".$_GET['id']." ORDER BY page_order ASC");
 
+	if ($pageInfo->status == "0") {$statSelect0 = "SELECTED";} else {$statSelect0 = "";}
+	if ($pageInfo->status == "1") {$statSelect1 = "SELECTED";} else {$statSelect1 = "";}
+	if ($pageInfo->status == "2") {$statSelect2 = "SELECTED";} else {$statSelect2 = "";}
+
 ?>
 
 <script type="text/javascript" src="<?php echo JS_DIRECTORY ?>jquery-2.1.1.js" ></script>
@@ -180,7 +184,21 @@ if (isset($_POST['uploadFile'])){
 							});
 						</script>
 						<br />
-						<b>Status:</b> <?php echo $pageInfo->status; ?><br />
+						<?php
+							if ($pageInfo->welcome == '1') {
+						?>
+						<b>Status:</b> Cannot change status of welcome page. <input type="hidden" name="status" value="0"><br />
+						<?php
+							} else {
+						?>
+						<b>Status:</b>  <select name="status">
+											<option value="0" <?php echo $statSelect0; ?>>Active</option>
+											<option value="1" <?php echo $statSelect1; ?>>Draft</option>
+											<option value="2" <?php echo $statSelect2; ?>>Template</option>
+										</select><br />
+						<?php
+							}
+						?>
 						<span class="submit"><input type="submit" class="button-secondary" name="submit-editor-content" value="Save"/></span>
 					</td>
 				</tr>
@@ -205,6 +223,15 @@ if (isset($_POST['uploadFile'])){
 				<?php
 					if(isset($pages_list)){
 						foreach($pages_list as $benPage){
+
+							// Check for page status and set message for front-end.
+							if ($benPage->status == "1"){
+								$bpStat = "<i>(Draft)</i>";
+							} elseif ($benPage->status == "2"){
+								$bpStat = "<i>(Template)</i>";
+							} else {
+								$bpStat = "";
+							}
 				?>
 					<tr class="alternate" id="group-<?php echo $benPage->pid; ?>">
 						<th class="check-column" scope="row">
@@ -216,7 +243,7 @@ if (isset($_POST['uploadFile'])){
 					  			}
 					  		?>
 						</th>
-						<td><?php echo $benPage->page_name; ?></td>
+						<td><?php echo $benPage->page_name; ?> <?php echo $bpStat; ?></td>
 						<td><a href="?page=benefits_page&editpage=true&pid=<?php echo $benPage->pid; ?>&id=<?php echo $client->id; ?>"> <img src="<?php echo IMG_DIRECTORY.'edit.png' ?>" align="absmiddle" title="Edit this page" /></a></td>
 						<td>
 							<?php

@@ -65,13 +65,7 @@ function list_clients() {
                     <tr class="thead">
                         <th scope="col"></th>
                         <th scope="col">Company Name</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
                         <th scope="col">Username</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">City</th>
-                        <th scope="col">State</th>
-                        <th scope="col">Zip</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -87,13 +81,7 @@ function list_clients() {
                         <th class="check-column" scope="row"><input type="checkbox" value="<?php echo $clients->id; ?>" name="delete[]"/></th>
                         
                         <td><?php echo $clients->company; ?></td>
-                        <td><?php echo $clients->first_name; ?></td>
-                        <td><?php echo $clients->last_name; ?></td>
-                        <td><a href="mailto:<?php echo $clients->email; ?>"><?php echo $clients->email; ?></a></td>
-                        <td><?php echo $clients->street; ?></td>
-                        <td><?php echo $clients->city; ?></td>
-                        <td><?php echo $clients->state; ?></td>
-                        <td><?php echo $clients->zip; ?></td>
+                        <td><?php echo $clients->email; ?></td>
                         <td>
                         <a href="?page=client_file_check&id=<?php echo $clients->id; ?>">&check;</a>
                         <a href="?page=add_client&id=<?php echo $clients->id; ?>">
