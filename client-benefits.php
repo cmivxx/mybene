@@ -180,6 +180,7 @@ if (isset($_POST['uploadFile'])){
 							});
 						</script>
 						<br />
+						<b>Status:</b> <?php echo $pageInfo->status; ?><br />
 						<span class="submit"><input type="submit" class="button-secondary" name="submit-editor-content" value="Save"/></span>
 					</td>
 				</tr>
