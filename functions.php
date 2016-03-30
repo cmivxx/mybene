@@ -2,22 +2,28 @@
 
 function redirectPage($location, $id) {
 ?>
-	<script type="text/javascript"> window.location = "<?php echo get_bloginfo('wpurl').'/wp-admin/admin.php'.$location.'&id='.$id; ?>" </script>
+	<!-- script type="text/javascript"> window.location = "<?php echo get_bloginfo('wpurl').'/wp-admin/admin.php'.$location.'&id='.$id; ?>" </script -->
 <?php
+	$redir_loc = get_bloginfo('wpurl') . "/wp-admin/admin.php" . $location . "&id=" . $id;
+	header("Location: $redir_loc");
 	exit;
 }
 
 function member_login_redirect($location, $id, $welcome_page_id) {
 ?>
-	<script type="text/javascript"> window.location = "<?php echo get_bloginfo('wpurl').$location.'&pid='.$welcome_page_id.'&uid='.$id.'&mybene=1'; ?>" </script>
+	<!-- script type="text/javascript"> window.location = "<?php echo get_bloginfo('wpurl').$location.'&pid='.$welcome_page_id.'&uid='.$id.'&mybene=1'; ?>" </script -->
 <?php
+	$redir_loc = get_bloginfo('wpurl') . $location . "&pid=" . $welcome_page_id . "&uid=" . $id . "&mybene=1";
+	header("Location: $redir_loc");
 	exit;
 }
 
 function redirect($location) {
 ?>
-	<script type="text/javascript"> window.location = "<?php echo get_bloginfo('wpurl').$location ?>" </script>
+	<!-- script type="text/javascript"> window.location = "<?php echo get_bloginfo('wpurl').$location ?>" </script -->
 <?php
+	$redir_loc = get_bloginfo('wpurl') . $location;
+	header("Location: $redir_loc");
 	exit;
 }
 
