@@ -110,73 +110,67 @@ add_filter('admin_head', 'show_tinymce_load');
 
 function setup_plugin() {
 	
-   global $wpdb;
-   global $db_version;
+	global $wpdb;
+	global $db_version;
 
 	
 
-   if($wpdb->get_var("show tables like ".CLIENTS_TABLE."" ) != CLIENTS_TABLE) {
+	if($wpdb->get_var("show tables like ".CLIENTS_TABLE."" ) != CLIENTS_TABLE) {
       
-      $sqlClients = "CREATE TABLE " . CLIENTS_TABLE . " (
-	  id mediumint(9) NOT NULL AUTO_INCREMENT,
-	  company VARCHAR(100) NOT NULL,
-	  first_name VARCHAR(100) NOT NULL,
-	  last_name VARCHAR(100) NOT NULL,
-	  email VARCHAR(100) NOT NULL,
-	  street VARCHAR(100) NOT NULL,
-	  city VARCHAR(100) NOT NULL,
-	  state VARCHAR(100) NOT NULL,
-	  zip VARCHAR(100) NOT NULL,
-	  phone VARCHAR(100) NOT NULL,
-	  path VARCHAR(100) NOT NULL,
-	  username VARCHAR(100) NOT NULL,
-	  password VARCHAR(100) NOT NULL,
-	  UNIQUE KEY id (id)
-	);";
+		$sqlClients = "CREATE TABLE " . CLIENTS_TABLE . " (
+			id mediumint(9) NOT NULL AUTO_INCREMENT,
+			company VARCHAR(100) NOT NULL,
+			logo VARCHAR(255) NOT NULL,
+			username VARCHAR(100) NOT NULL,
+			password VARCHAR(100) NOT NULL,
+			UNIQUE KEY id (id)
+		);";
 
-      require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-      dbDelta($sqlClients);
-	  
-      add_option("db_version", $db_version);
-   }
-      if($wpdb->get_var("show tables like ".FILES_TABLE."" ) != FILES_TABLE) {
-      
-      $sqlFiles = "CREATE TABLE " . FILES_TABLE . " (
-	  id mediumint(9) NOT NULL AUTO_INCREMENT,
-	  client_id INT(11) NOT NULL,
-	  file_name VARCHAR(255) NOT NULL,
-	  UNIQUE KEY id (id)
-	);";
+		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+		dbDelta($sqlClients);
 
-	dbDelta($sqlFiles);
-   } 
+		add_option("db_version", $db_version);
+	}
 
-      if($wpdb->get_var("show tables like ".PAGES_TABLE."" ) != PAGES_TABLE) {
-      
-      $sqlPages = "CREATE TABLE " . PAGES_TABLE . " (
-	  pid mediumint(9) NOT NULL AUTO_INCREMENT,
-	  client_id INT(11) NOT NULL,
-	  welcome INT(11) NOT NULL,
-	  page_name VARCHAR(255) NOT NULL,
-	  html TEXT,
-	  page_order INT(11),
-	  UNIQUE KEY pid (pid)
-	);";
+	if($wpdb->get_var("show tables like ".FILES_TABLE."" ) != FILES_TABLE) {
 
-	dbDelta($sqlPages);
-   } 
+		$sqlFiles = "CREATE TABLE " . FILES_TABLE . " (
+			id mediumint(9) NOT NULL AUTO_INCREMENT,
+			client_id INT(11) NOT NULL,
+			file_name VARCHAR(255) NOT NULL,
+			UNIQUE KEY id (id)
+		);";
 
-      if($wpdb->get_var("show tables like ".ADMIN_TABLE."" ) != ADMIN_TABLE) {
-      
-      $sqlAdmin = "CREATE TABLE " . ADMIN_TABLE . " (
-	  aid mediumint(9) NOT NULL AUTO_INCREMENT,
-	  page_benefits INT(11) NOT NULL,
-	  page_login INT(11) NOT NULL,
-	  UNIQUE KEY aid (aid)
-	);";
+		dbDelta($sqlFiles);
+	} 
 
-	dbDelta($sqlAdmin);
-   } 
+	if($wpdb->get_var("show tables like ".PAGES_TABLE."" ) != PAGES_TABLE) {
+
+		$sqlPages = "CREATE TABLE " . PAGES_TABLE . " (
+			pid mediumint(9) NOT NULL AUTO_INCREMENT,
+			client_id INT(11) NOT NULL,
+			welcome INT(11) NOT NULL,
+			page_name VARCHAR(255) NOT NULL,
+			html TEXT,
+			status INT(11),
+			page_order INT(11),
+			UNIQUE KEY pid (pid)
+		);";
+
+		dbDelta($sqlPages);
+	} 
+
+	if($wpdb->get_var("show tables like ".ADMIN_TABLE."" ) != ADMIN_TABLE) {
+
+		$sqlAdmin = "CREATE TABLE " . ADMIN_TABLE . " (
+			aid mediumint(9) NOT NULL AUTO_INCREMENT,
+			page_benefits INT(11) NOT NULL,
+			page_login INT(11) NOT NULL,
+			UNIQUE KEY aid (aid)
+		);";
+
+		dbDelta($sqlAdmin);
+	} 
 
 
 }
@@ -195,12 +189,11 @@ function uninstall() {
 function add_menus() {
 
 	// Add a new top-level menu 
-   add_menu_page( 'Policy Briefcase Panel', 'Policy Briefcase', 'manage_options', 'list_clients', 'list_clients', IMG_DIRECTORY.'ico16.png', 3);
-   add_submenu_page( 'list_clients', 'Briefcase Panel', 'List Clients', 'manage_options', 'list_clients', 'list_clients');
-   add_submenu_page( 'options.php', 'Benefits Page', 'Benfits Page', 'manage_options', 'benefits_page', 'benefits_page');
-   add_submenu_page( 'list_clients', 'New Insured', 'Add New Client', 'manage_options', 'add_client', 'add_client');
-   add_submenu_page( 'list_clients', 'Admin', 'Admin', 'manage_options', 'myBenAdmin', 'myBenAdmin');
-   add_submenu_page( 'options.php', 'Check For Missing Files', 'File Check', 'manage_options', 'client_file_check', 'client_file_check');
+	add_menu_page( 'Policy Briefcase Panel', 'Policy Briefcase', 'manage_options', 'list_clients', 'list_clients', IMG_DIRECTORY.'ico16.png', 3);
+	add_submenu_page( 'list_clients', 'Briefcase Panel', 'List Clients', 'manage_options', 'list_clients', 'list_clients');
+	add_submenu_page( 'options.php', 'Benefits Page', 'Benfits Page', 'manage_options', 'benefits_page', 'benefits_page');
+	add_submenu_page( 'list_clients', 'New Insured', 'Add New Client', 'manage_options', 'add_client', 'add_client');
+	add_submenu_page( 'list_clients', 'Admin', 'Admin', 'manage_options', 'myBenAdmin', 'myBenAdmin');
 
 }
 
