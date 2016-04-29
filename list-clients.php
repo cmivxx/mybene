@@ -55,7 +55,7 @@ function list_clients() {
            <input type="submit" class="button-secondary delete" name="deleteit" value="Delete Client(s)" onclick="return confirm('WARNING: Are you sure you want to delete? This action will remove all related information for this client including all myBenefits files.')"/>
         </p>
 	<p class="add_new">
-	   <a href="/wp-admin/admin.php?page=add_client" class="add_client_button">Add New Client</a>
+	   <input type="button" onclick="location.href='/wp-admin/admin.php?page=add_client';" value="Add New Client" class="button-secondary" />
 	</p>
 
     <table class="widefat">
@@ -97,6 +97,14 @@ function list_clients() {
                 </form>
 </div>
 
-<?php }
+<style>
+        p.submit {
+                 display: inline-block;
+        }
 
-?>
+        p.add_new {
+                 display: inline-block;
+        }
+</style>
+
+<?php } ?>
